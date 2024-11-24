@@ -31,7 +31,7 @@ const ColorScheme darkColorScheme = ColorScheme.dark(
   onInverseSurface: Color(0xFF2F3036),
   inverseSurface: Color(0xFFE3E2E9),
   onPrimary: Color(0xFF1B2D60),
-  onPrimaryContainer: Color(0xFFDBE1FF),
+  onPrimaryContainer: primaryColor,
   onSecondaryContainer: Color(0xFFDDE1F9),
   onSurface: Color(0xFFDFE3E7),
   onSurfaceVariant: Color(0xFFC5C6D0),

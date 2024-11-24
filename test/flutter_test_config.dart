@@ -36,6 +36,7 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
 
   goldenTestSupportedThemes = [
     Brightness.light,
+    Brightness.dark,
   ];
 
   globalSetup = (locale) async => Intl.systemLocale = locale.languageCode;

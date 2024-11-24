@@ -25,6 +25,7 @@ class EventsPageVerticalListItem extends StatelessWidget {
       child: Card(
         margin: EdgeInsets.zero,
         child: InkWell(
+          borderRadius: BorderRadius.circular(10),
           onTap: () {},
           child: Row(
             children: [
