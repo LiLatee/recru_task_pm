@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recru_task_pm/features/events/data/repositories/events_repository.dart';
 import 'package:recru_task_pm/features/events/presentation/events_page/cubits/events_page_vertical_list_cubit/events_page_vertical_list_cubit_state.dart';
@@ -11,13 +13,20 @@ class EventsPageVerticalListCubit extends Cubit<EventsPageVerticalListCubitState
   }
 
   final EventsRepository _eventsRepository;
+  StreamSubscription? _subscription;
 
   Future<void> _load() async {
-    _eventsRepository.streamVerticalListItems().delay(const Duration(seconds: 2)).listen((event) {
+    _subscription = _eventsRepository.streamVerticalListItems().delay(const Duration(seconds: 2)).listen((event) {
       event.fold(
         (failure) => emit(EventsPageVerticalListCubitErrorState(failure: failure)),
         (items) => emit(EventsPageVerticalListCubitDataState(items: items)),
       );
     });
+  }
+
+  @override
+  Future<void> close() {
+    _subscription?.cancel();
+    return super.close();
   }
 }
